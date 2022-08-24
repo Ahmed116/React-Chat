@@ -25,7 +25,7 @@ export default class HomePage extends Component {
                     <div className='dot'></div>
                     <div className='dot'></div>
                   </div>
-                  <span className='buttoncooltext'>Get Started</span>
+                  <span className='buttoncooltext'>Start</span>
                 </a>
               </Link>
             </div>

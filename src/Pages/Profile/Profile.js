@@ -83,6 +83,7 @@ export const withRouter = (Component) => {
                 null,
                 err =>{
                     this.props.showToast(0, err.message)
+                    console.log(err)
                 },
                 ()=>{
                     uploadTask.snapshot.ref.getDownloadURL().then(downloadURL =>{
