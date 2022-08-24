@@ -123,32 +123,20 @@ export default class HomePage extends Component {
               </div>
 
               <div className='l-box-lrg pure-u-1 pure-u-md-3-5'>
-                <h4>Contact Us</h4>
+                <h4>Contact Me</h4>
+               
                 <p>
-                  For any question or suggestion you can directly contact us on
-                  our Facebook Page:
-                  <a href=' https://web.facebook.com/programming438/'>
+                  Facebook :{" "}
+                  <a href='https://www.facebook.com/ahmed.helles.7/'>
+                    https://www.facebook.com/ahmed.helles.7/
+                  </a>
+                </p>
+               
+                <p>
+                Linkedin :{" "}
+                  <a href=' https://www.linkedin.com/in/ahmed-hilles/'>
                     {' '}
-                    https://web.facebook.com/programming438/
-                  </a>
-                </p>
-                <p>
-                  Twitter:
-                  <a href='https://twitter.com/alizeb438'>
-                    https://twitter.com/alizeb438
-                  </a>
-                </p>
-                <p>
-                  Facebook:{' '}
-                  <a href='https://web.facebook.com/alizeb438 '>
-                    https://web.facebook.com/alizeb438{' '}
-                  </a>
-                </p>
-                <p>
-                  Instagram:
-                  <a href=' https://www.instagram.com/alizeb438/'>
-                    {' '}
-                    https://www.instagram.com/alizeb438/
+                    https://www.linkedin.com/in/ahmed-hilles/
                   </a>
                 </p>
 
