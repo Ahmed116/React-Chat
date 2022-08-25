@@ -19,7 +19,7 @@ export default class HomePage extends Component {
             </p>
             <div id='custom-button-wrapper'>
               <Link to='/login'>
-                <a className='my-super-cool-btn'>
+                <a href="# " className='my-super-cool-btn'>
                   <div className='dots-container'>
                     <div className='dot'></div>
                     <div className='dot'></div>
@@ -49,14 +49,14 @@ export default class HomePage extends Component {
               </div>
               <div className='l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4'>
                 <h3 className='content-subhead'>
-                <i className="fa-solid fa-user-lock"></i>
+                  <i className='fa-solid fa-user-lock'></i>
                   Firebase Authentication
                 </h3>
                 <p>Firebase Authentication has been implemented in this app</p>
               </div>
               <div className='l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4'>
                 <h3 className='content-subhead'>
-                <i className="fa-solid fa-photo-film"></i>
+                  <i className='fa-solid fa-photo-film'></i>
                   Media
                 </h3>
                 <p>
@@ -65,7 +65,7 @@ export default class HomePage extends Component {
               </div>
               <div className='l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4'>
                 <h3 className='content-subhead'>
-                <i className="fa-solid fa-arrows-spin"></i>
+                  <i className='fa-solid fa-arrows-spin'></i>
                   Updates
                 </h3>
                 <p>
@@ -124,16 +124,16 @@ export default class HomePage extends Component {
 
               <div className='l-box-lrg pure-u-1 pure-u-md-3-5'>
                 <h4>Contact Me</h4>
-               
+
                 <p>
-                  Facebook :{" "}
+                  Facebook :{' '}
                   <a href='https://www.facebook.com/ahmed.helles.7/'>
                     https://www.facebook.com/ahmed.helles.7/
                   </a>
                 </p>
-               
+
                 <p>
-                Linkedin :{" "}
+                  Linkedin :{' '}
                   <a href=' https://www.linkedin.com/in/ahmed-hilles/'>
                     {' '}
                     https://www.linkedin.com/in/ahmed-hilles/
@@ -152,5 +152,3 @@ export default class HomePage extends Component {
     )
   }
 }
-
-
