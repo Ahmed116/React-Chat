@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc3275f0.css",
+    "main.js": "/static/js/main.607f1697.js",
+    "static/js/787.35cea4b2.chunk.js": "/static/js/787.35cea4b2.chunk.js",
+    "static/media/back.jpg": "/static/media/back.63f3dda3eab35f8fcd02.jpg",
+    "static/media/Ahmed.jpeg": "/static/media/Ahmed.d8d10472e7d4f768bac3.jpeg",
+    "static/media/mimi5.gif": "/static/media/mimi5.ee3b0cad174670cbf913.gif",
+    "static/media/mimi7.gif": "/static/media/mimi7.9c159414fa8d1f617379.gif",
+    "static/media/mimi1.gif": "/static/media/mimi1.d552880f12a27c38810d.gif",
+    "static/media/mimi6.gif": "/static/media/mimi6.6085c7d5fa9843a1caba.gif",
+    "static/media/mimi4.gif": "/static/media/mimi4.b860a6d3e49988338a72.gif",
+    "static/media/mimi8.gif": "/static/media/mimi8.c1777652218f83fb71a1.gif",
+    "static/media/mimi2.gif": "/static/media/mimi2.5ea5c848011ac8e5a8fe.gif",
+    "static/media/mimi9.gif": "/static/media/mimi9.111d4f3f7150afe03d70.gif",
+    "static/media/lego4.png": "/static/media/lego4.ccd49b644becca30d5d8.png",
+    "static/media/lego3.png": "/static/media/lego3.6000a2a2d5ccc60fe51e.png",
+    "static/media/lego5.png": "/static/media/lego5.f67388812d3b61186c7c.png",
+    "static/media/lego6.png": "/static/media/lego6.03bee4546f5e9bf96b82.png",
+    "static/media/lego2.png": "/static/media/lego2.04e9e2574a5ed2f5dd22.png",
+    "static/media/lego1.png": "/static/media/lego1.4b3152cb7db3f62bdbca.png",
+    "static/media/nopic.jpg": "/static/media/nopic.88198e0bf89b676d4f4b.jpg",
+    "static/media/14-wave_hand.png": "/static/media/14-wave_hand.c3082d3579b88c79b183.png",
+    "index.html": "/index.html",
+    "main.bc3275f0.css.map": "/static/css/main.bc3275f0.css.map",
+    "main.607f1697.js.map": "/static/js/main.607f1697.js.map",
+    "787.35cea4b2.chunk.js.map": "/static/js/787.35cea4b2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bc3275f0.css",
+    "static/js/main.607f1697.js"
+  ]
+}
