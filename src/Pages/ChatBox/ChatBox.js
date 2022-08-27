@@ -40,7 +40,6 @@ export default class ChatBox extends React.Component {
     this.currentPeerUserMessages = []
     this.removeListener = null
     this.currentPhotoFile = null
-
     firebase
       .firestore()
       .collection('users')
@@ -111,7 +110,6 @@ export default class ChatBox extends React.Component {
   //   type 2 = stickers
 
   onSendMessage = (content, type) => {
-    let notificationMessages = []
     if (this.state.isShowSticker && type === 2) {
       this.setState({ isShowSticker: false })
     }
@@ -139,21 +137,24 @@ export default class ChatBox extends React.Component {
         this.setState({ inputValue: '' })
       })
 
-    this.currentPeerUserMessages.map((item) => {
+    const notificationMessages = this.currentPeerUserMessages.map((item) => {
+      console.log(item.notificationId !== this.currentUserId)
       if (item.notificationId !== this.currentUserId) {
-        notificationMessages.push({
+        return {
           notificationId: item.notificationId,
           number: item.number, //to send number of notifications
-        })
+        }
       }
     })
+
+    console.log(this.currentPeerUser, 'this.currentPeerUser.documentkey')
+    console.log(notificationMessages, 'notificationMessages')
+
     firebase
       .firestore()
       .collection('users')
       .doc(this.currentPeerUser.documentkey)
-      .update({
-        messages: notificationMessages,
-      })
+      .update({ unReadMessages: this.currentPeerUser.unReadMessages + 1 })
       .then((data) => {})
       .catch((err) => {
         this.props.showToast(0, err.toString())
