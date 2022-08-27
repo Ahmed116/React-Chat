@@ -7,8 +7,8 @@
     width: 100%;
     position: relative;
     
-    background-image: url("https://i.pinimg.com/474x/2e/2e/25/2e2e25c53d858f4af66151304fdb68b7.jpg");
- 
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgTow3s4Igu4il30vnpAiKqWjpXiS2OCTn2jGoT3JrQjtV3uxhOvmxJO3uGYtwW8eLGZ0&usqp=CAU");
+    
     backface-visibility: hidden;
     border-left: 1px solid #ededed;
     /* border-right: 5px solid #DFA375; */
@@ -20,6 +20,9 @@
    
   
 }
+
+
+
 .viewAvatarItem{
     margin-left: 20px;
     background-image: url('../../Images/nopic.jpg');
@@ -135,7 +138,7 @@ input::placeholder {
     width: 300px;
     height: auto;
    
-    background-color: #dcf8c6;
+    background-color: #204b70;
     align-self: flex-end;
     margin-right: 20px;
     margin-top: 10px;
@@ -143,7 +146,7 @@ input::placeholder {
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 0px;
-    color: #203152;
+    color: #edf1f8;
     text-align: left;
     padding-left: 20px;
     padding-right: 20px;
@@ -214,7 +217,7 @@ input::placeholder {
 .viewItemLeft {
     width: 300px;
     height: auto;
-    background-color: #ffffff;
+    background-color: #204b70;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border-bottom-left-radius: 0px;
@@ -223,7 +226,7 @@ input::placeholder {
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #303030;
+    color: #edf1f8;
     box-shadow: 0 5px 5px #808888;
 }
 
@@ -256,7 +259,7 @@ input::placeholder {
     margin-left: 400px;
     font: italic small-caps bold 15px/30px Georgia, serif;
     width: 110px;
-    background-color: #e1f3fb;
+    background-color: #204b70;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
@@ -317,7 +320,7 @@ input::placeholder {
 }
 
 .textTimeLeft {
-    color: #808888;
+    color: #eef8f8;
     font-size: 12px;
     font-style: italic;
     margin-left: 50px;

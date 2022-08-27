@@ -20,12 +20,12 @@ export default class HomePage extends Component {
             <div id='custom-button-wrapper'>
               <Link to='/login'>
                 <a href="# " className='my-super-cool-btn'>
-                  <div className='dots-container'>
+                  {/* <div className='dots-container'>
                     <div className='dot'></div>
                     <div className='dot'></div>
                     <div className='dot'></div>
-                  </div>
-                  <span className='buttoncooltext'>Start</span>
+                  </div> */}
+                  <span className='buttoncooltext'></span>
                 </a>
               </Link>
             </div>
@@ -126,16 +126,16 @@ export default class HomePage extends Component {
                 <h4>Contact Me</h4>
 
                 <p>
-                  Facebook :{' '}
+                  Facebook&nbsp;<i className="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;
                   <a href='https://www.facebook.com/ahmed.helles.7/'>
                     https://www.facebook.com/ahmed.helles.7/
                   </a>
                 </p>
 
                 <p>
-                  Linkedin :{' '}
+                  Linkedin&nbsp; &nbsp;<i className="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;
                   <a href=' https://www.linkedin.com/in/ahmed-hilles/'>
-                    {' '}
+                   
                     https://www.linkedin.com/in/ahmed-hilles/
                   </a>
                 </p>
