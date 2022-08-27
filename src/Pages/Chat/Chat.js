@@ -27,6 +27,7 @@ class Chat extends React.Component {
       currentPeerUser: null,
       displayedContacts: [],
       displayedContactswithNotification: [],
+      unReadMessages: 0,
     }
     this.currentUserDocumentId = localStorage.getItem(
       LoginString.FirebaseDocumentId
@@ -69,66 +70,81 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
-    let notificationMessages = []
     firebase
       .firestore()
       .collection('users')
       .doc(this.currentUserDocumentId)
-      .get()
-      .then((doc) => {
-        doc.data().messages.map((item) => {
-          this.currentUserMessages.push({
-            notificationId: item.notificationId,
-            number: item.number,
-          })
-        })
+      .onSnapshot((snpashot) => {
+        console.log(snpashot.data(), 'snpashot.docs')
+        this.currentUserMessages = snpashot.data().messages.map((item) => ({
+          notificationId: item.notificationId,
+          number: item.number,
+        }))
+        // console.log(this.currentUserMessages, 'this.currentUserMessages')
         this.setState({
           displayedContactswithNotification: this.currentUserMessages,
+          unReadMessages: snpashot.data().unReadMessages,
         })
+        this.getListUsers()
       })
-    this.getListUsers()
   }
 
   getListUsers = async () => {
-    const result = await firebase.firestore().collection('users').get()
-    if (result.docs.length > 0) {
-      console.log(result.docs.length, 'result.docs')
-      
-      this.searchUsers = result.docs.map((item, index) => ({
-        key: index,
-        documentkey: item.id,
-        id: item.data().id,
-        name: item.data().name,
-        messages: item.data().messages,
-        URL: item.data().URL,
-        description: item.data().description,
-      }))
-
-      this.setState({ isLoading: false })
-    }
-    console.log(this.searchUsers, 'this.searchUsers')
-    this.renderListUser()
+    firebase
+      .firestore()
+      .collection('users')
+      .onSnapshot((snapshot) => {
+        console.log(snapshot.docs[0].data(), 'snapshot')
+        if (snapshot.docs.length > 0) {
+          this.searchUsers = snapshot.docs.map((item, index) => ({
+            key: index,
+            documentkey: item.id,
+            id: item.data().id,
+            name: item.data().name,
+            messages: item.data().messages,
+            URL: item.data().URL,
+            description: item.data().description,
+            unReadMessages: item.data().unReadMessages,
+          }))
+          console.log(this.searchUsers, 'this.searchUsers')
+        }
+        this.renderListUser()
+      })
+    this.setState({ isLoading: false })
   }
 
   getClassnameforUserandNotification = (itemId) => {
     let number = 0
     let className = ''
     let check = false
+
     if (
       this.state.currentPeerUser &&
       this.state.currentPeerUser.id === itemId
     ) {
       className = 'viewWrapItemFocused'
     } else {
-      this.state.displayedContactswithNotification.forEach((item) => {
-        if (item.notificationId.length > 0) {
-          if (item.notificationId === itemId) {
-            check = true
-            number = item.number
+      console.log(
+        this.state.displayedContactswithNotification,
+        'this.state.displayedContactswithNotification'
+      )
+      const notification = this.state.displayedContactswithNotification.reduce(
+        (acc, curr) => {
+          console.log(curr, 'curr')
+          if (
+            curr.notificationId.length > 0 &&
+            curr.notificationId === itemId
+          ) {
+            acc.check = true
+            acc.number = item.number
           }
-        }
-      })
-      if (check === true) {
+          return acc
+        },
+        { check: false, number: 0 }
+      )
+
+      // console.log(notification, 'notification')
+      if (notification.check === true) {
         className = 'viewWrapItemNotification'
       } else {
         className = 'viewWrapItem'
@@ -138,16 +154,16 @@ class Chat extends React.Component {
   }
 
   notificationErase = (itemId) => {
-    this.state.displayedContactswithNotification.forEach((el) => {
-      if (el.notificationId.length > 0) {
-        if (el.notificationId !== itemId) {
-          this.notificationMessagesErase.push({
-            notificationId: el.notificationId,
-            number: el.number,
-          })
+    this.notificationMessagesErase =
+      this.state.displayedContactswithNotification.map((item) => {
+        if (item.notificationId.length > 0 && item.notificationId !== itemId) {
+          return {
+            notificationId: item.notificationId,
+            number: item.number,
+          }
         }
-      }
-    })
+      })
+
     this.updaterenderlist()
   }
 
@@ -156,22 +172,23 @@ class Chat extends React.Component {
       .firestore()
       .collection('users')
       .doc(this.currentUserDocumentId)
-      .update({ messages: this.notificationMessagesErase })
+      .update({ messages: this.notificationMessagesErase, unReadMessages: 0 })
     this.setState({
       displayedContactswithNotification: this.notificationMessagesErase,
     })
   }
 
   renderListUser = () => {
+    console.log(this.searchUsers, 'renderListUser')
     if (this.searchUsers.length > 0) {
-      let viewListUser = []
       let classname = ''
-      console.log(this.searchUsers, 'searchUsers')
-      this.searchUsers.map((item) => {
+      // console.log(this.searchUsers, 'searchUsers')
+      const viewListUser = this.searchUsers.map((item) => {
         if (item.id !== this.currentUserId) {
           classname = this.getClassnameforUserandNotification(item.id)
-          viewListUser.push(
+          return (
             <button
+              key={`btn-${item.key}`}
               id={item.key}
               className={classname}
               onClick={() => {
@@ -197,10 +214,11 @@ class Chat extends React.Component {
               <div className='viewWrapContentItem'>
                 <span className='textItem'>{`${item.name}`}</span>
               </div>
-              {classname === 'viewWrapItemNotification' ? (
+              {this.state.unReadMessages > 0 &&
+              item.ID !== this.currentUserId ? (
                 <div className='notificationpragraph'>
                   <p id={item.key} className='newmessages'>
-                    New messages
+                    {`New messages ${this.state.unReadMessages}`}
                   </p>
                 </div>
               ) : null}
@@ -208,7 +226,6 @@ class Chat extends React.Component {
           )
         }
       })
-      console.log(viewListUser, 'viewListUser')
       this.setState({
         displayedContacts: viewListUser,
       })
@@ -231,13 +248,13 @@ class Chat extends React.Component {
 
   displaySearchedContacts = () => {
     if (this.searchUsers.length > 0) {
-      let viewListUser = []
       let classname = ''
-      this.displayedContacts.map((item) => {
+      const viewListUser = this.displayedContacts.map((item) => {
         if (item.id !== this.currentUserId) {
           classname = this.getClassnameforUserandNotification(item.id)
-          viewListUser.push(
+          return (
             <button
+              key={`btn-${item.key}`}
               id={item.key}
               className={classname}
               onClick={() => {
@@ -283,6 +300,7 @@ class Chat extends React.Component {
   }
 
   render() {
+    console.log(this.state.unReadMessages, 'this.state.unReadMessages')
     return (
       <div className='root'>
         <div className='body'>

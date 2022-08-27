@@ -58,6 +58,7 @@ class SignUp extends Component {
               URL: '',
               description: '',
               messages: [{ notificationId: '', number: 0 }],
+              unReadMessages: 0,
             })
             .then((docRef) => {
               localStorage.setItem(LoginString.ID, result.user.uid)
