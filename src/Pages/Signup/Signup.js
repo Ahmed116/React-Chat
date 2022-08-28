@@ -57,7 +57,8 @@ class SignUp extends Component {
               password,
               URL: '',
               description: '',
-              messages: [{ notificationId: '', number: 0 }],
+              messages: [],
+
               unReadMessages: 0,
             })
             .then((docRef) => {
@@ -98,7 +99,6 @@ class SignUp extends Component {
       boxShadow: ' 0 5px 5px #808888',
       height: '10rem',
       paddingTop: '48px',
-     
     }
 
     return (
