@@ -93,13 +93,12 @@ class SignUp extends Component {
       flexDirection: 'column',
       alignItems: 'center',
       color: 'White',
-      backgroundColor: '#1ebea5',
+      backgroundColor: '#d4d4d4',
       width: '100%',
       boxShadow: ' 0 5px 5px #808888',
       height: '10rem',
       paddingTop: '48px',
-      opacity: '0.5',
-      borderBottom: '5px solid green',
+     
     }
 
     return (

@@ -21,10 +21,12 @@ function Header() {
           </a>
         </nav>
         <ul>
-            <li><Link to='/Login'>Login</Link>
-            </li>
-            <li><Link to='/Signup'>Signup</Link>
-            </li>
+          <li>
+            <Link to='/Login'>Login</Link>
+          </li>
+          <li>
+            <Link to='/Signup'>Signup</Link>
+          </li>
         </ul>
       </div>
     </header>

@@ -110,7 +110,7 @@ class Login extends React.Component {
 
     const root = {
       height: '100vh',
-      background: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)',
+      background: 'linear-gradient(90deg, #ffffff 0%, #ffffff 100%)',
 
       marginBottom: '50px',
     }
@@ -120,20 +120,19 @@ class Login extends React.Component {
       alignItems: 'center',
       color: 'White',
       marginBottom: '20px',
-      backgroundColor: '#1ebea5',
+      backgroundColor: '#d4d4d4',
       width: '100%',
       boxShadow: ' 0 5px 5px #808888',
       height: '10rem',
       paddingTop: '48px',
-      opacity: '0.5',
-      borderBottom: '5px solid green',
+      // opacity: '0.5',
+      borderBottom: '5px solid #364050',
     }
     const form = {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: '50px',
+      width: '100%', 
     }
     const avatar = {
-      backgroundColor: 'green',
+      backgroundColor: '#364050',
     }
     return (
       <Grid container component='main' style={root}>
