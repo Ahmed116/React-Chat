@@ -8,6 +8,10 @@ import moment from 'moment'
 import './ChatBox.css'
 import LoginString from '../Login/LoginStrings'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import CustomDialogContent from '../../Components/CustomDialog'
+import { Prompt, Alert, CustomDialog } from 'react-st-modal'
+
+
 
 export default class ChatBox extends React.Component {
   constructor(props) {
@@ -17,6 +21,7 @@ export default class ChatBox extends React.Component {
       isShowSticker: false,
 
       inputValue: '',
+    
     }
 
     this.currentUserName = localStorage.getItem(LoginString.Name)
@@ -174,6 +179,37 @@ export default class ChatBox extends React.Component {
     this.setState({ isShowSticker: !this.state.isShowSticker })
   }
 
+ 
+  Prompt = async (item) => {
+    console.log(item.timestamp, 'MESSAGE')
+    const content = await CustomDialog(<CustomDialogContent defaultValue={item.content} />, {
+      title: 'Edit Message?',
+      showCloseIcon: true,
+    })
+
+    if (content) {
+      const timestamp = moment().valueOf().toString()
+
+      const itemMessage = {
+        timestamp: timestamp,
+        content: content.trim(),
+        type: type,
+      }
+  
+      firebase
+        .firestore()
+        .collection('Messages')
+        .doc(this.groupChatId)
+        .collection(this.groupChatId)
+        .doc(timestamp)
+        .set(itemMessage)
+        .then(() => {
+          this.setState({ inputValue: '' })
+        })
+      // Alert(`You are ${content} years old!`, 'Your age')
+    }
+  }
+
   render() {
     return (
       <Card className='viewChatBoard'>
@@ -194,6 +230,7 @@ export default class ChatBox extends React.Component {
         </div>
         <div className='viewListContentChat'>
           {this.renderListMessage()}
+
           <div
             style={{ float: 'left', clear: 'both' }}
             ref={(el) => {
@@ -307,13 +344,21 @@ export default class ChatBox extends React.Component {
         if (item.idFrom === this.currentUserId) {
           if (item.type === 0) {
             viewListMessage.push(
-              <div className='viewItemRight' key={item.timestamp}>
+              <div
+                className='viewItemRight'
+                key={item.timestamp}
+                onClick={() => this.Prompt(item)}
+              >
                 <span className='textContentItem'>{item.content}</span>
               </div>
             )
           } else if (item.type === 1) {
             viewListMessage.push(
-              <div className='viewItemRight2' key={item.timestamp}>
+              <div
+                className='viewItemRight2'
+                key={item.timestamp}
+                onClick={() => this.Prompt(item)}
+              >
                 <img
                   className='imgItemRight'
                   src={item.content}
@@ -323,7 +368,11 @@ export default class ChatBox extends React.Component {
             )
           } else {
             viewListMessage.push(
-              <div className='viewItemRight3' key={item.timestamp}>
+              <div
+                className='viewItemRight3'
+                key={item.timestamp}
+                onClick={() => this.Prompt(item)}
+              >
                 <img
                   className='imgItemRight'
                   src={this.getGifImage(item.content)}
