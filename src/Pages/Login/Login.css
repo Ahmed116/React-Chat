@@ -26,13 +26,22 @@
   cursor: pointer;
 
   border: none;
-  color: white;
+  color: #364050!important;
   padding: 10px 28px;
   text-align: center;
   font-size: 30px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   border-radius: 10px;
   box-shadow: 0 5px 5px #808888;
+  margin-bottom: 5px;
+}
+.btn:hover{
+  color: #686d6d!important;
+}
+
+.btnLink{
+  text-decoration: none; 
+
 }
 
 /* Darker background on mouse-over */

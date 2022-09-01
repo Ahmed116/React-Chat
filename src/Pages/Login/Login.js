@@ -165,7 +165,7 @@ class Login extends React.Component {
               <Typography component='h1' variant='h5' Sign in To />
             </div>
             <div>
-              <Link to='/'>
+              <Link className='btnLink' to='/'>
                 <button className='btn'>
                   <i class='fa fa-home'></i>
                   Chat With Me
