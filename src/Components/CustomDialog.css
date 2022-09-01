@@ -1,0 +1,35 @@
+
+.viewBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: aliceblue !important;
+}
+.updateBtn{
+    font-size:large;
+    background-color: lightseagreen;
+    border:none;
+    border-radius: 5px;
+    padding: 8px;
+}
+.updateBtn:hover {
+    background-color: cornflowerblue;
+}
+
+.deleteBtn{
+    font-size:large;
+    background-color: #e63b52;
+    border:none;
+    border-radius: 5px;
+    padding: 8px;
+
+}
+.deleteBtn:hover{
+    background-color: #e67584;
+}

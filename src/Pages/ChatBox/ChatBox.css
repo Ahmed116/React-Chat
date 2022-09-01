@@ -360,3 +360,7 @@ input::placeholder {
   height: 40px;
   margin-left: 10px;
 }
+.editIcon{
+  float: right;
+ cursor: pointer;
+}
